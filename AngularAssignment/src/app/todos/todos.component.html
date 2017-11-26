@@ -1,0 +1,44 @@
+<!--component html goes here -->
+
+<!--<h1>hello World</h1>-->
+<body>
+<div *ngIf="!isShowTodos">
+    <!--<button type="button btn-secondary" (click)="Back()">&nbsp;back</button>-->
+    <div class="content">
+        <div *ngFor="let todo of getAllTodos; let i=index">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <h3>#{{todo.id}} </h3>
+                        <!--[ngClass]="[todo.completed == true ? strikeLine : ''] "-->
+                        <div [ngClass]="[todo.completed == true ? strikeLine : '']" class="card-header">
+                            {{todo.title}}
+                        </div>
+                        <div class="card-footer">
+                            <div class="row">
+                                <!--<div class="col-md-12">-->
+                                    <div class="col-md-6">
+                                        Completed: &nbsp; <input type="checkbox" (click)="CheckCompleted(todo.id,todo.userId,todo.title,todo.completed)"
+                                            [(ngModel)]="todo.completed" />
+                                        <span [ngClass]="{'line-strike': todo.completed}"> </span>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        Delete: &nbsp; <input type="checkbox" (click)="DeleteTodo(todo.id,todo.userId,todo.title,todo.completed)"/>
+                                    </div>
+
+                                <!--</div>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group create-todo">
+    <input type="text" id="formFields_1" placeholder="ToDo" [(ngModel)]="todoTitle">
+    <button type="button btn-secondary" (click)="CreateToDo(todoTitle)"><clr-icon shape="plus-circle" class="is-solid"></clr-icon>&nbsp;Add</button>
+</div>
+</div>
+
+</body>

@@ -1,0 +1,64 @@
+<!--<div class="container">-->
+
+<div *ngIf="activeRoute" class="clarity-container">
+    <!--{{activeRoute}}-->
+    <div class="col-md-12 text-centerS">
+        <div class="row">
+            <div *ngFor="let userDetails of getAllUserInfo; let i=index" class="col-lg-5 col-md-8 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4 class="head-align"> #&nbsp;{{userDetails.id}}</h4>
+                            </div>
+                            <div class="col-md-6 text-center">
+                                <h3> {{userDetails.name}} </h3>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="card-block">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <clr-icon shape="user" class="has-badge--success is-solid card-text"></clr-icon>&nbsp; {{userDetails.username}} <br>
+                                <clr-icon shape="phone-handset" class="is-solid has-badge--success card-text"></clr-icon>&nbsp; {{userDetails.phone}}<br>
+                                <clr-icon shape="envelope" class="is-solid has-badge--success card-text"></clr-icon>&nbsp; {{userDetails.email}}<br>
+                                <clr-icon shape="network-globe" class="is-solid has-badge--success card-text"></clr-icon>&nbsp; {{userDetails.website}}
+                            </div>
+                            <div class="col-md-6">
+                                <clr-icon shape="compass" class="is-solid"></clr-icon> {{userDetails.address.street}}<br>
+                                <clr-icon shape="map" class="is-solid"></clr-icon> {{userDetails.address.suite}}<br>
+                                <clr-icon shape="pin"></clr-icon>{{userDetails.address.city}}<br>
+                                <clr-icon shape="map-marker" class="is-solid"></clr-icon> {{userDetails.address.zipcode}}<br>
+                                <clr-icon shape="target" class="is-solid"></clr-icon>{{userDetails.address.geo.lat}} &nbsp; {{userDetails.address.geo.lng}}
+                            </div>
+
+                        </div>
+                        <hr>
+                        <div class="card-text">
+                            <h5 class="text-center">Company Details</h5>
+                            <div class="row">
+                                <div class="col-md-12 text-center">
+                                    <clr-icon shape="organization" class="is-solid"></clr-icon> {{userDetails.company.bs}} &nbsp;&nbsp;
+                                    <clr-icon shape="store" class="is-solid"></clr-icon> {{userDetails.company.name}}
+                                    <br>
+                                    <clr-icon shape="clipboard" class="is-solid"></clr-icon> {{userDetails.company.catchPhrase}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-sm btn-primary" (click)="ShowTodos(userDetails.id,userDetails.name)">View Todos</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+          <router-outlet></router-outlet>
+<div *ngIf="!activeRoute">
+    <!--{{activeRoute}}-->
+<todos #todo [userid]="userID" [username]="userName" [isShow]="activeRoute"></todos>
+</div>
+<!--</div>-->
